@@ -15,7 +15,12 @@ public class LogicServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Отримуємо поточну сесію
-        HttpSession currentSession = req.getSession();
+        HttpSession currentSession = req.getSession(false); // не створюємо нову сесію, якщо її немає
+
+        if (currentSession == null || currentSession.getAttribute("field") == null) {
+            resp.sendRedirect("/start"); // перенаправляємо на ініціалізацію гри
+            return;
+        }
 
         // Отримуємо об'єкт ігрового поля з сесії
         Field field = extractField(currentSession);
@@ -108,7 +113,11 @@ public class LogicServlet extends HttpServlet {
 
     private Field extractField(HttpSession currentSession) {
         Object fieldAttribute = currentSession.getAttribute("field");
-        if (Field.class != fieldAttribute.getClass()) {
+        if (fieldAttribute == null) {
+            currentSession.invalidate();
+            throw new RuntimeException("Session is broken or field is not set, try one more time");
+        }
+        if (!(fieldAttribute instanceof Field)) {
             currentSession.invalidate();
             throw new RuntimeException("Session is broken, try one more time");
         }
