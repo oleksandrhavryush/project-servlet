@@ -1,16 +1,31 @@
 # Tic-Tac-Toe Game
 
-This repository contains a simple implementation of the classic Tic-Tac-Toe game in Java. The game utilizes Java Servlets for the backend and JSP for the frontend, allowing two players to take turns placing their respective signs (X or O) on a 3x3 grid.
+This project is a web-based implementation of the classic Tic-Tac-Toe game using Java Servlets and JSP. The game allows two players to take turns placing their respective signs (X or O) on a 3x3 grid.
 
-## Getting Started
+## Project Overview
 
-To run the application, you need a Java web server (e.g., Apache Tomcat) and a web browser. Follow these steps:
+The project includes the following key features:
 
-1. Clone the repository:
- <pre><code>git clone https://github.com/your-username/tic-tac-toe.git</code></pre>
+- **Interactive Game Board:** A dynamic 3x3 grid where players can click to place their signs.
+- **Game Logic:** Automatic handling of player moves, checking for wins, and determining draws.
+- **Session Management:** Each game session is maintained using HTTP sessions to track the state of the game.
+- **Reset Functionality:** A feature to restart the game at any time by invalidating the current session.
+
+## Setup and Configuration
+
+### Prerequisites
+
+- Java 1.8 or higher
+- Apache Tomcat (version 9 or higher recommended)
+- Maven (for building the project)
+
+### Installation
+
+1. **Clone the Repository:** Clone the repository to your local machine.
 2. Deploy the application on your Java web server.
-
-3. Access the application in your web browser by navigating to http://localhost:your-port/start.
+3. **Download and Install Tomcat 9:** Follow the official Tomcat documentation for installation instructions.
+4. **Configure the Program Launch through IDEA:** Follow the official IntelliJ IDEA documentation for configuration instructions.
+5. **Access the Application:** Open your web browser and navigate to: `http://localhost:8080`
 
 ## Code Structure
 
@@ -23,20 +38,17 @@ To run the application, you need a Java web server (e.g., Apache Tomcat) and a w
 
 ## How to Play
 
-1. Start the game by navigating to http://localhost:your-port/start.
+### Start the Game
+Navigate to `http://localhost:your-port/start` to initialize a new game session.
 
-2. Click on the cells of the grid to make your move. Alternatively, restart the game at any time.
+### Make a Move
+Click on any cell in the 3x3 grid to place your sign (X). The game will alternate turns between X and O.
 
-3. The game will notify you if there's a winner or if it's a draw. You can restart the game after completion.
+### Game Outcome
+The game will display a message indicating whether X or O wins or if the game is a draw. You can restart the game at any time by clicking the "Start again" button.
 
-Enjoy playing Tic-Tac-Toe!
+## Built With
 
-## Dependencies
-
-- Java Servlet API
-- JavaServer Pages (JSP)
-- jQuery (for asynchronous restart functionality)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md] file for details.
+- **Java Servlet API:** Used for handling HTTP requests and managing sessions.
+- **JavaServer Pages (JSP):** Used for rendering the game interface.
+- **jQuery:** Used for asynchronous communication (e.g., restarting the game).
